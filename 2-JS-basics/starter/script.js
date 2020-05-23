@@ -18,3 +18,24 @@ alert(firstName + ' is a ' + age + ' year old ' + job + '. Is he married? ' + is
 
 var lastName = prompt('What is his last name?')
 console.log(firstName + ' ' + lastName)
+
+/**
+ * Basic operators
+ */
+var year, yearJohn, yearMark, ageJohn, ageMark;
+now = 2018;
+yearJohn = 2018 - 28;
+yearMark  = 2018 -33;
+
+console.log(yearJohn);
+
+console.log(now + 2);
+console.log(now * 2);
+console.log(now / 2);
+
+// Logical operators
+var johnOlder = ageJohn > ageMark;
+console.log(johnOlder);
+
+// typeof operator
+console.log(typeof johnOlder);
