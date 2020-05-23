@@ -14,10 +14,10 @@ console.log(firstName + ' is a ' + age + ' year old ' + job + '. Is he married? 
 age = 'twenty eight';
 job = 'driver'
 
-alert(firstName + ' is a ' + age + ' year old ' + job + '. Is he married? ' + isMarried);
+// alert(firstName + ' is a ' + age + ' year old ' + job + '. Is he married? ' + isMarried);
 
-var lastName = prompt('What is his last name?')
-console.log(firstName + ' ' + lastName)
+// var lastName = prompt('What is his last name?')
+// console.log(firstName + ' ' + lastName)
 
 /**
  * Basic operators
@@ -39,3 +39,26 @@ console.log(johnOlder);
 
 // typeof operator
 console.log(typeof johnOlder);
+
+// Multiple operators
+var now = 2018
+var yearJohn = 1989;
+var fullAge = 18;
+
+var isFullAge = now - yearJohn >= fullAge;
+console.log(isFullAge)
+
+// Grouping
+var ageJohn = now - yearJohn;
+var ageMark = 35;
+var average = (ageJohn + ageMark) / 2;
+console.log(average);
+
+// Multiple assignments
+var x,y;
+x = y = (3 + 5) * 4 - 6; 
+console.log(x,y);
+
+x *= 2;
+
+console.log(x);
