@@ -1,13 +1,11 @@
+// Variable mutation 
 var firstName = 'John';
-console.log(firstName);
+var age = 28;
 
-var lastName = 'Smith';
-var age = 20;
+console.log(firstName + ' ' + age);
 
-var fullAge = true;
-console.log(fullAge);
+var job, isMarried;
+job = 'teacher';
+isMarried = true;
 
-job = 'Teacher';
-console.log(job);
-
-var e4years = 4;
+console.log(firstName + ' is a ' + age + ' year old ' + job + '. Is he married? ' + isMarried)
