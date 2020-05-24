@@ -1,13 +1,12 @@
-// Booliean logic
+// Ternary operator
 
-var firstName, age;
-firstName = 'John';
-age = 20;
+var firstName = 'John';
+var age = 16;
 
-if (age < 13) {
-   console.log(firstName + ' is a boy') 
-} else if (age >=13 && age < 20) {
-   console.log(firstName + ' is a teenager') 
-} else {
-   console.log(firstName + ' is a man') 
-}
+age >= 18 ? console.log(firstName + ' drinks beer.') 
+: console.log(firstName + " drinks juice.");
+
+
+var drink = age >= 18 ? console.log('beer'): console.log('juice');
+console.log(drink);
+
