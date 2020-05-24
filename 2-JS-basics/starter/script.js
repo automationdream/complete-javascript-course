@@ -1,7 +1,7 @@
-/*************************
- * Objects and properties
+/*********************************
+ * Objects and methods 
+ * 
  */
-
 
 var john = {
     firstName: 'John',
@@ -10,17 +10,10 @@ var john = {
     family: ['Jane', 'John'],
     job: 'teacher',
     isMarried: true,
+    calcAge: function (birthYear) {
+        return 2018 - this.birthYear; //using this
+    }
+ 
+};
 
-}
-
-console.log(john.firstName); //accessing
-console.log(john['firstName']); //accessing
-
-var x = 'birthYear';
-console.log(john[x]);
-
-var jane = new Object();
-
-//New Object syntax
-jane.firstName = 'Jane';
-jane.lastName = 'Smith';
+console.log(john.calcAge());
