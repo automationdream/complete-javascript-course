@@ -4,9 +4,9 @@
  */
 
 var john = ['John', 'Smith', 1990, 'teacher', 'developer']
+var i = 0;
 
-for (var i = 0; i < john.length; i++) {
-
+while (i < john.length){
     console.log(john[i]);
-
+    i++;
 }
