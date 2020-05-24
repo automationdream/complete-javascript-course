@@ -10,3 +10,18 @@ age >= 18 ? console.log(firstName + ' drinks beer.')
 var drink = age >= 18 ? console.log('beer'): console.log('juice');
 console.log(drink);
 
+// Switch statement
+job = 'teacher'
+switch (job) {
+    case 'teacher':
+        console.log('teatcher')
+        // If there would not be a break then it will test next statements 
+        break;
+
+    case 'driver':
+        console.log('teatcher')
+        
+        break;
+    default:
+        break;
+}
