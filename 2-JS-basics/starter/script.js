@@ -16,4 +16,5 @@ var john = {
  
 };
 
-console.log(john.calcAge());
+john.age = john.calcAge(); // using builtin function and adding the new index into the object
+console.log(john)
