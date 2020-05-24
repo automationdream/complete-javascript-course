@@ -7,7 +7,7 @@ function calculateAge(year) {
     console.log(2016-year);
 }
 
-retirement(1956); // error
+// retirement(1956); // error
 
 calculateAge(1990);
 
@@ -16,8 +16,9 @@ var retirement = function (year) {
 }
 
 
-
-
+console.log(age) // Undefined <- variables which does not have values yet would be undefined
+var age = 23;
+console.log(age); // After declaration they would be printed
 
 
 
