@@ -18,6 +18,14 @@ var retirement = function (year) {
 
 console.log(age) // Undefined <- variables which does not have values yet would be undefined
 var age = 23;
+
+function foo() {
+    var age = 65;
+    console.log(age);
+}
+
+foo();
+
 console.log(age); // After declaration they would be printed
 
 
