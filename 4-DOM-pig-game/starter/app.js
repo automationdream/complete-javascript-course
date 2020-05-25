@@ -9,14 +9,26 @@ GAME RULES:
 
 */
 
-var scores, roundScore, activePlayer, dice;
+var scores, roundScore, activePlayer;
 
 scores  = [0,0];
 roundScore  = 0
 activePlayer = 0;
 
-dice = Math.floor(Math.random() * 6) + 1
-
-document.querySelector("#current-" + activePlayer).innerHTML = '<em>' + dice + '</em>';
-
 document.querySelector('.dice').style.display = 'none'
+
+document.getElementById('score-0').textContent = '0';
+document.getElementById('score-1').textContent = '0';
+
+document.getElementById('current-0').textContent = '0';
+document.getElementById('current-1').textContent = '0';
+
+function rollDice() {
+    var dice = Math.floor(Math.random() * 6) + 1
+    var diceDom = document.querySelector('.dice')
+    diceDom.style.display = 'block'
+    diceDom.src = 'dice-' + dice + '.png';
+    return dice
+}
+
+document.querySelector('.btn-roll').addEventListener('click', rollDice);
