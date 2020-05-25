@@ -34,6 +34,23 @@ function rollDice() {
         roundScore += dice;
         document.getElementById('current-' + activePlayer).innerHTML = roundScore
     } else {
+        nextPlayer()
+    }
+}
+
+document.querySelector('.btn-roll').addEventListener('click', rollDice);
+
+document.querySelector('.btn-hold').addEventListener('click', function () {
+    // Add CURRENT score to GLOBAL score
+    scores[activePlayer] += roundScore;
+    document.querySelector('#score-' + activePlayer).textContent = scores[activePlayer];
+    nextPlayer()
+    
+});
+
+
+function nextPlayer() {
+    
         activePlayer === 0 ? activePlayer = 1 : activePlayer = 0;
         roundScore = 0;
 
@@ -43,7 +60,6 @@ function rollDice() {
         
         document.querySelector('.player-0-panel').classList.toggle('active');
         document.querySelector('.player-1-panel').classList.toggle('active');
-    }
-}
 
-document.querySelector('.btn-roll').addEventListener('click', rollDice);
+        document.querySelector('.dice').style.display = 'none'
+}
