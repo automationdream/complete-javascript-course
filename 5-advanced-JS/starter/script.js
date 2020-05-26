@@ -41,18 +41,15 @@ ages = [18,25, 40]
 console.log(arrayCalc(ages,maxHeartRate))
 
 function interviewQuestion(job) {
+
+    return function (name) {
     if (job === 'designer') {
-        return function (name) {
             console.log('Can you please explain what UX design is, ' + name + '?');
         }
-    }
     else if (job === 'teacher') {
-        return function (name) {
             console.log('Could you please tell us what subject do you teach, ' + name + '?');
         }
-    }
     else {
-        return function (name) {
             console.log('What do you do, ' + name + '?');
         }
     }
