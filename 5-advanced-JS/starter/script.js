@@ -39,3 +39,15 @@ function maxHeartRate(el) {
 ages = [18,25, 40]
 
 console.log(arrayCalc(ages,maxHeartRate))
+
+function interviewQuestion(job) {
+    if (job === 'designer') {
+        return function (name) {
+            console.log('Can you please explain what UX design is, ' + name + '?');
+        }
+    }
+}
+
+var designerQuestion = interviewQuestion('designer');
+
+designerQuestion('John')
