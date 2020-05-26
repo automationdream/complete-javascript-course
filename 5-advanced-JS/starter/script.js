@@ -50,4 +50,9 @@ function interviewQuestion(job) {
 
 var designerQuestion = interviewQuestion('designer');
 
-designerQuestion('John')
+designerQuestion('John');
+
+(function () {
+   var score = Math.random() * 10; 
+   console.log(score >= 5);
+})();
