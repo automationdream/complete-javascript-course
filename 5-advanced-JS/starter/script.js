@@ -112,4 +112,7 @@ var john = {
         job: 'designer'
     }
 
-    john.presentation.apply(emily, ['friendly','afternoon']);
+    var johnFriendly = john.presentation.bind(john, 'formal');
+
+    johnFriendly('morning');
+    johnFriendly('night');
