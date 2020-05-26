@@ -21,3 +21,21 @@ jane.calculateAge(currentYear);
 mark.calculateAge(currentYear);
 
 console.log(john.lastName)
+
+function arrayCalc(arr, fn) {
+    var arrRes = []
+    for (var k=0; k < arr.length; k++) {
+       arrRes.push(fn(arr[k])); 
+    }
+    return arrRes
+}
+
+function maxHeartRate(el) {
+    if (el>18 && el < 81) {
+        return Math.round(206.9 - (0.67 * el))
+    }
+}
+
+ages = [18,25, 40]
+
+console.log(arrayCalc(ages,maxHeartRate))
