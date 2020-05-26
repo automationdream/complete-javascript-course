@@ -81,3 +81,35 @@ retirement(66)(1990);
 interviewQuestion('designer')('John');
 interviewQuestion('teacher')('Steve');
 interviewQuestion()('Wiki')
+
+var john = {
+    name: 'John',
+    age: 26,
+    job: 'teacher',
+    presentation: function (style, timeOfDay) {
+        if (style === 'formal') {
+            console.log('Good ' + timeOfDay + ', Ladies and gentlemen! I\'m ' +
+            this.name + ', I am a ' +
+            this.job + ' and I am ' +
+            this.age + ' years old' 
+            );
+        }
+        else if (style === 'friendly'){
+            console.log('Hey whats up? ' + 
+            this.name + ', I am a ' +
+            this.job + ' and I am ' +
+            this.age + ' years old.'
+            );
+        }
+    }
+    }
+
+    john.presentation('formal','morning')
+
+    var emily = {
+        name: 'Emily',
+        age: 35,
+        job: 'designer'
+    }
+
+    john.presentation.call(emily, 'friendly','afternoon');
