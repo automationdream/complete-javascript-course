@@ -1,118 +1,110 @@
-const currentYear = 2020;
 
-var Person = function (name, yearOfBirth, job) {
-    this.name = name,
-    this.yearOfBirth = yearOfBirth,
-    this.job = job
+/////////////////////////////
+// CODING CHALLENGE
+
+
+/*
+--- Let's build a fun quiz game in the console! ---
+
+1. Build a function constructor called Question to describe a question. A question should include:
+*/
+
+var Question = function (question,answers,correctAnswer) {
+    this.question = question;
+    this.answers = answers;
+    this.correctAnswer = correctAnswer;
 }
+/*
 
-Person.prototype.calculateAge = function (currentYear) {
-        console.log(currentYear - this.yearOfBirth)
-    }
+a) question itself
+b) the answers from which the player can choose the correct one (choose an adequate data structure here, array, object, etc.)
+c) correct answer (I would use a number for this)
+*/
+var question1 = new Question(
+    'What is my name?',
+    ['Bartek', 'Janusz', 'Piotr', 'Zenek'],
+    0
+)
 
-Person.prototype.lastName = 'Smith' 
 
-var john = new Person('John', 1990, 'teacher');
-var jane = new Person('John', 1969, 'disigner');
-var mark = new Person('Mark', 1989, 'retired');
+var question2 = new Question(
+    'What you would like to eat tommorow?',
+    ['Pho', 'Kofta', 'Sausages', 'Pizza'],
+    1
+)
 
-john.calculateAge(currentYear);
-jane.calculateAge(currentYear);
-mark.calculateAge(currentYear);
+var question3 = new Question(
+    'What is your favourite song?',
+    ['Sex on fire', 'Mama', 'Czerwone i bure', 'Moja Honda'],
+    3
+)
 
-console.log(john.lastName)
+var question4 = new Question(
+    'What is your favourite programming language?',
+    ['Sex on fire', 'Mama', 'Czerwone i bure', 'Moja Honda'],
+    3
+)
+/*
+2. Create a couple of questions using the constructor
 
-function arrayCalc(arr, fn) {
-    var arrRes = []
-    for (var k=0; k < arr.length; k++) {
-       arrRes.push(fn(arr[k])); 
-    }
-    return arrRes
-}
+*/
+// 3. Store them all inside an array
 
-function maxHeartRate(el) {
-    if (el>18 && el < 81) {
-        return Math.round(206.9 - (0.67 * el))
-    }
-}
+var questions = [question1, question2, question3, question4]
 
-ages = [18,25, 40]
+// 4. Select one random question and log it on the console, together with the possible answers (each question should have a number) (Hint: write a method for the Question objects for this task).
+shuffle(questions)
 
-console.log(arrayCalc(ages,maxHeartRate))
+// 5. Use the 'prompt' function to ask the user for the correct answer. The user should input the number of the correct answer such as you displayed it on Task 4.
 
-function interviewQuestion(job) {
-
-    return function (name) {
-    if (job === 'designer') {
-            console.log('Can you please explain what UX design is, ' + name + '?');
-        }
-    else if (job === 'teacher') {
-            console.log('Could you please tell us what subject do you teach, ' + name + '?');
-        }
-    else {
-            console.log('What do you do, ' + name + '?');
-        }
-    }
-}
-
-var designerQuestion = interviewQuestion('designer');
-
-designerQuestion('John');
-
-(function () {
-   var score = Math.random() * 10; 
-   console.log(score >= 5);
-})();
-
-function retirement(retirementAge) {
-    var a = ' years left until retirement.';
-    return function (yearOfBirth) {
-        var age = 2016 - yearOfBirth;
-        console.log((retirementAge - age) + a);
-    }
+for (let i = 0; i < questions.length; i++) {
+    var q = questions[i]
+    console.log(q.question)
+    var answers = questions[i].answers
     
+    console.log('------')
+    for (let a = 0; a < answers.length; a++) {
+        console.log(a+1+'.'+ answers[a])
+    }
+    console.log('------')
+
+    var userAnswer = prompt(q.question);
+
+
 }
 
-var retirementUS = retirement(66);
-retirementUS(1990);
+// 6. Check if the answer is correct and print to the console whether the answer is correct ot nor (Hint: write another method for this).
 
-retirement(66)(1990);
+evaluateAnswer(userAnswer, q)
 
-interviewQuestion('designer')('John');
-interviewQuestion('teacher')('Steve');
-interviewQuestion()('Wiki')
+// 7. Suppose this code would be a plugin for other programmers to use in their code. So make sure that all your code is private and doesn't interfere with the other programmers code (Hint: we learned a special technique to do exactly that).
 
-var john = {
-    name: 'John',
-    age: 26,
-    job: 'teacher',
-    presentation: function (style, timeOfDay) {
-        if (style === 'formal') {
-            console.log('Good ' + timeOfDay + ', Ladies and gentlemen! I\'m ' +
-            this.name + ', I am a ' +
-            this.job + ' and I am ' +
-            this.age + ' years old' 
-            );
+
+
+function shuffle(array) {
+    let counter = array.length;
+
+    // While there are elements in the array
+    while (counter > 0) {
+        // Pick a random index
+        let index = Math.floor(Math.random() * counter);
+
+        // Decrease counter by 1
+        counter--;
+
+        // And swap the last element with it
+        let temp = array[counter];
+        array[counter] = array[index];
+        array[index] = temp;
+    }
+
+    return array;
+}
+    function evaluateAnswer(userAnswer,question) {
+        if (userAnswer - 1 == question.correctAnswer){
+            alert('Great')
         }
-        else if (style === 'friendly'){
-            console.log('Hey whats up? ' + 
-            this.name + ', I am a ' +
-            this.job + ' and I am ' +
-            this.age + ' years old.'
-            );
+        else {
+            alert('Wrong answer')
         }
     }
-    }
-
-    john.presentation('formal','morning')
-
-    var emily = {
-        name: 'Emily',
-        age: 35,
-        job: 'designer'
-    }
-
-    var johnFriendly = john.presentation.bind(john, 'formal');
-
-    johnFriendly('morning');
-    johnFriendly('night');
