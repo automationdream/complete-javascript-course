@@ -1,17 +1,7 @@
 var budgetController = (
 
     function () {
-        var x = 23;
-        
-        var add = function (a) {
-            return x + a;
-            
-        }
-        return {
-            publicTest: function (b) {
-                return add(b);
-               }
-        }
+        // Some code
     }
 )();
 
@@ -22,13 +12,14 @@ var UIController = (function () {
 )();
 
 var controller = (function (budgetCtrl, UICtrl) {
-    var z = budgetCtrl.publicTest(6);
+    document.querySelector('.add__btn').addEventListener('click', function () {
+        // 1. Get the filed input data
 
-    return {
-        anotherPublic: function () {
-           console.log(z) 
-        }
-    }
-}
+        // 2. Add the item to the budget controller
 
-)(budgetController, UIController);
+        // 3. Calculate the budget
+
+        // 4. Display the budget on the UI
+    })
+
+})(budgetController, UIController);
