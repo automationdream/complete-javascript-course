@@ -70,26 +70,26 @@ var UIController = (function () {
                 value: parseFloat(document.querySelector(DOMstrings.inputValue).value),
             };
         },
-        addListItem: function (obj,type){
-            var html, newHtml, element; 
+        addListItem: function (obj, type) {
+            var html, newHtml, element;
 
-           // Create HTML string with placeholder text 
+            // Create HTML string with placeholder text 
 
-           if (type === 'inc'){
+            if (type === 'inc') {
                 element = DOMstrings.incomeContainer;
 
                 html = '<div class="item clearfix" id="income-%id%"><div class="item__description">%description%</div><div class="right clearfix"><div class="item__value">%value%</div><div class="item__delete"><button class="item__delete--btn"><i class="ion-ios-close-outline"></i></button></div></div></div>'
-           } else if (type === 'exp'){
+            } else if (type === 'exp') {
                 element = DOMstrings.expenseContainer;
 
                 html = '<div class="item clearfix" id="expense-%id%"><div class="item__description">%description%</div><div class="right clearfix"><div class="item__value">%value%</div><div class="item__percentage">21%</div><div class="item__delete"><button class="item__delete--btn"><i class="ion-ios-close-outline"></i></button></div></div></div>'
-           }
-           // Replace placeholder text with some actual data
-           newHtml = html.replace('%id%', obj.id);
-           newHtml = newHtml.replace('%description%', obj.description);
-           newHtml = newHtml.replace('%value%', obj.value);
-           // Insert HTML into DOM
-           document.querySelector(element).insertAdjacentHTML('beforeend',newHtml);
+            }
+            // Replace placeholder text with some actual data
+            newHtml = html.replace('%id%', obj.id);
+            newHtml = newHtml.replace('%description%', obj.description);
+            newHtml = newHtml.replace('%value%', obj.value);
+            // Insert HTML into DOM
+            document.querySelector(element).insertAdjacentHTML('beforeend', newHtml);
 
         },
         clearFields: function () {
@@ -98,7 +98,7 @@ var UIController = (function () {
 
             fieldsArr = Array.prototype.slice.call(fields);
 
-            fieldsArr.forEach(function(current, index, array) {
+            fieldsArr.forEach(function (current, index, array) {
                 current.value = "";
 
             })
@@ -144,18 +144,20 @@ var controller = (function (budgetCtrl, UICtrl) {
         // 1. Get the filed input data
         var input = UICtrl.getinput();
 
-        // 2. Add the item to the budget controller
-        newItem = budgetController.addItem(input.type, input.description, input.value);
+        if (input.description !== "" && !isNaN(input.value) && input.value > 0) {
+            // 2. Add the item to the budget controller
+            newItem = budgetController.addItem(input.type, input.description, input.value);
 
-        // 3. Add item to the UI
-        UICtrl.addListItem(newItem, input.type)
+            // 3. Add item to the UI
+            UICtrl.addListItem(newItem, input.type)
 
-        // 4. Clear the fields
-        UICtrl.clearFields();
+            // 4. Clear the fields
+            UICtrl.clearFields();
 
-        // 5. Calculate and update budget
-        updateBudget();
+            // 5. Calculate and update budget
+            updateBudget();
 
+        }
     };
 
     return {
