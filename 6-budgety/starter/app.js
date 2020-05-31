@@ -67,7 +67,7 @@ var UIController = (function () {
             return {
                 type: document.querySelector(DOMstrings.inputType).value,
                 description: document.querySelector(DOMstrings.inputDesription).value,
-                value: document.querySelector(DOMstrings.inputValue).value,
+                value: parseFloat(document.querySelector(DOMstrings.inputValue).value),
             };
         },
         addListItem: function (obj,type){
