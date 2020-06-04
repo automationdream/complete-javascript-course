@@ -175,6 +175,11 @@ var UIController = (function () {
 
         getDOMstrings: function () {
             return DOMstrings;
+        },
+
+        deleteListItem: function (selectorID) {
+            var el = document.getElementById(selectorID);
+            el.parentNode.removeChild(el);
         }
     }
     // some code 
@@ -247,6 +252,7 @@ var controller = (function (budgetCtrl, UICtrl) {
             budgetController.deleteItem(type, id);
 
             //2. delete the item from the UI
+            UICtrl.deleteListItem(itemId);
 
             //3. Update and show the new budget
 
