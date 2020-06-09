@@ -179,7 +179,7 @@ var UIController = (function () {
             // Replace placeholder text with some actual data
             newHtml = html.replace('%id%', obj.id);
             newHtml = newHtml.replace('%description%', obj.description);
-            newHtml = newHtml.replace('%value%', obj.value);
+            newHtml = newHtml.replace('%value%', this.formatNumber(obj.value, type));
             // Insert HTML into DOM
             document.querySelector(element).insertAdjacentHTML('beforeend', newHtml);
 
@@ -198,9 +198,12 @@ var UIController = (function () {
             fieldsArr[0].focus();
         },
         displayBuget: function (obj) {
-            document.querySelector(DOMstrings.budgetLabel).textContent = obj.budget;
-            document.querySelector(DOMstrings.incomeLabel).textContent = obj.totalInc;
-            document.querySelector(DOMstrings.expenseLabel).textContent = obj.totalExp;
+            var type;
+            obj.budget > 0 ? type = 'inc' : type = 'exp';
+
+            document.querySelector(DOMstrings.budgetLabel).textContent = this.formatNumber(obj.budget, type)
+            document.querySelector(DOMstrings.incomeLabel).textContent = this.formatNumber(obj.totalInc, 'inc');
+            document.querySelector(DOMstrings.expenseLabel).textContent = this.formatNumber(obj.totalExp, 'exp');
 
             if (obj.percentage > 0) {
                 document.querySelector(DOMstrings.percentageLabel).textContent = obj.percentage + '%';
@@ -229,13 +232,24 @@ var UIController = (function () {
 
             });
 
+        },
+        formatNumber: function (num,type) {
+            
+            num = Math.abs(num);
+            num = num.toFixed(2);
 
+            numSplit = num.split('.');
+            int = numSplit[0];
 
+            if (int.length > 3) {
+                int = int.substr(0,int.length -3) + ',' + int.substr(int.length -3,3);
+            }
 
+            dec = numSplit[1];
 
+            type === 'exp' ? sign = '-' : sign = '+';
 
-
-
+            return sign + ' ' + int + '.' + dec;
 
         },
 
