@@ -7,3 +7,18 @@ for (let i=0; i<5; i++) {
 }
 
 console.log(i); // <- this i is completely different than inside of the code block
+
+{
+    const a = 1;
+    let b = 2;
+}
+
+let firstName = 'John';
+let lastName = 'Smith';
+const yearOfBirth = 1990;
+
+function calcAge(year) {
+   return 2016 - year; 
+}
+
+console.log(`This is ${firstName} ${lastName}. He is ${calcAge(yearOfBirth)}.`) // <- templates literal
