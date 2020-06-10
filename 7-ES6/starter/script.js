@@ -46,3 +46,16 @@ console.log(ages6);
 ages6 = years.map((el, index) => `Element ${index + 1}: Age ${2020 - el}`)
 
 console.log(ages6);
+
+const box6 = {
+    color: 'green',
+    position: '1',
+    clickMe: function () {
+        document.querySelector('.green').addEventListener('click', () => {
+            var str = 'This is box numer ' + this.position + ' and it is ' + this.color;
+            alert(str);
+            })
+    }
+}
+
+box6.clickMe()
