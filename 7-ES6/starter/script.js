@@ -28,3 +28,17 @@ const n = `${firstName} ${lastName}`;
 console.log(n.startsWith('J'));
 console.log(n.endsWith('J'));
 console.log(n.includes('J'));
+
+const years = [1990, 1965, 1982, 1937];
+
+// ES5
+var ages5 = years.map(function (year) {
+    return 2020 - year;
+    })
+
+console.log(ages5)
+
+// ES6
+const ages6 = years.map(el => 2020 - el)
+
+console.log(ages6);
