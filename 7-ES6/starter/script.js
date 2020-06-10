@@ -22,3 +22,9 @@ function calcAge(year) {
 }
 
 console.log(`This is ${firstName} ${lastName}. He is ${calcAge(yearOfBirth)}.`) // <- templates literal
+
+const n = `${firstName} ${lastName}`;
+
+console.log(n.startsWith('J'));
+console.log(n.endsWith('J'));
+console.log(n.includes('J'));
