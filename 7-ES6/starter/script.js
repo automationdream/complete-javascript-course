@@ -59,3 +59,19 @@ const box6 = {
 }
 
 box6.clickMe()
+
+
+Person = function (name) {
+    this.name = name;
+}
+
+Person.prototype.myFriends = (friends) => {
+    var arr = friends.map(el  => {
+        return this.name + ' is friends with '  + el
+        })
+        console.log(arr);
+}
+
+var friends = ['Bob', 'Jane', 'Mark']
+
+new Person('John').myFriends(friends);
