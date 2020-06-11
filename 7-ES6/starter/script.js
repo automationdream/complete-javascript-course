@@ -99,3 +99,7 @@ for (const cur of boxesArr6) {
     }
     cur.textContent = 'I changed to green';
 }
+
+var ages = [12,2,17,21,9,11];
+
+console.log(ages.findIndex(cur => cur >= 18));
