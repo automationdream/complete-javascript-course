@@ -89,3 +89,13 @@ const boxesArr6 = Array.from(boxes);
 boxesArr6.forEach(cur => {
     cur.style.backgroundColor = 'green';
 })
+
+// ES6 for loop
+
+
+for (const cur of boxesArr6) {
+    if (cur.className === 'box blue') {
+        continue;
+    }
+    cur.textContent = 'I changed to green';
+}
