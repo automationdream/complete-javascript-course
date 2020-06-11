@@ -104,3 +104,15 @@ var ages = [12,2,17,21,9,11];
 
 console.log(ages.findIndex(cur => cur >= 18));
 console.log(ages.find(cur => cur >= 18));
+
+function addFourAges(a, b, c, d) {
+    return a + b + c + d;
+}
+
+var sum1 = addFourAges(18,10,12,22)
+console.log(sum1);
+
+var sum2 = addFourAges.apply(null, ages);
+console.log(sum2);
+
+console.log(addFourAges(...ages))
