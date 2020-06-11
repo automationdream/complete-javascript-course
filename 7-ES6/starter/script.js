@@ -103,3 +103,4 @@ for (const cur of boxesArr6) {
 var ages = [12,2,17,21,9,11];
 
 console.log(ages.findIndex(cur => cur >= 18));
+console.log(ages.find(cur => cur >= 18));
