@@ -144,3 +144,31 @@ function SmithPerson(firstName, yearOfBirth, lastName='Smith', nationality='amer
 }
 
 var john = new SmithPerson('John', 1990)
+
+const question = new Map();
+question.set('question', 'What is the official name of latest major JavaScript version?')
+question.set(1, 'ES5')
+question.set(2, 'ES6')
+question.set(3, 'ES2015')
+question.set(4, 'ES7')
+question.set('correct', 3)
+question.set(true, 'Correct answer!')
+question.set(false, 'Wrong, lets try agarin')
+
+console.log(question.get('question'));
+console.log(question);
+
+question.delete(4);
+
+question.has(4) ? question.delete(4) : ''; 
+
+
+question.forEach((value, key) => {
+    if (typeof(key) === 'int') {
+    console.log(`Answer ${key}: ${value}`)
+    }
+})
+
+console.log(question.entries())
+
+// const ans = parseInt(prompt('Write the conrrect answer'))
