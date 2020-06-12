@@ -126,3 +126,11 @@ const all = [h, ...boxes2];
 Array.from(all).forEach(cur => {
     cur.style.color = 'purple';
 })
+
+function isFullAge6(...years) {
+    years.forEach(cur => 
+        console.log((2020-cur)>=18))
+    
+}
+
+isFullAge6(2013,1999,1966)
