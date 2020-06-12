@@ -135,9 +135,7 @@ function isFullAge6(...years) {
 
 isFullAge6(2013,1999,1966)
 
-function SmithPerson(firstName, yearOfBirth, lastName, nationality) {
-
-    lastName === undefined ? lastName = 'Smith' : lastName;
+function SmithPerson(firstName, yearOfBirth, lastName='Smith', nationality='american') {
 
     this.firstName = firstName;
     this.lastName = lastName;
@@ -145,3 +143,4 @@ function SmithPerson(firstName, yearOfBirth, lastName, nationality) {
     this.nationality = nationality;
 }
 
+var john = new SmithPerson('John', 1990)
