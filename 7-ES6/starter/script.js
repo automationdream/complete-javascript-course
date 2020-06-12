@@ -181,7 +181,26 @@ class Person6 { constructor (name, yearOfBirth, job) {
     }
 
     calculateAge() {
-        var age = new Date().getFullYear - this.yearOfBirth()
+        var age = new Date().getFullYear() - this.yearOfBirth
         console.log(age)
     }
 }
+
+class Athlete6 extends Person6 {
+    constructor(name, yearOfBirth, job, olympicGames, medals) {
+        super (name, yearOfBirth, job);
+        this.olympicGames = olympicGames;
+        this.medals = medals;
+    }
+
+    wonMedal() {
+        this.medals++;
+        console.log(this.medals);
+    }
+}
+
+const johnAthlete6 = new Athlete6('John', 1990,'swimmer', 3, 10)
+console.log(johnAthlete6)
+
+johnAthlete6.calculateAge()
+johnAthlete6.wonMedal()
