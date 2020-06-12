@@ -116,3 +116,13 @@ var sum2 = addFourAges.apply(null, ages);
 console.log(sum2);
 
 console.log(addFourAges(...ages))
+
+const h = document.querySelector('h1');
+
+const boxes2 = document.querySelectorAll('.box');
+
+const all = [h, ...boxes2];
+
+Array.from(all).forEach(cur => {
+    cur.style.color = 'purple';
+})
