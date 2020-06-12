@@ -172,3 +172,16 @@ question.forEach((value, key) => {
 console.log(question.entries())
 
 // const ans = parseInt(prompt('Write the conrrect answer'))
+
+// ES6 Class
+class Person6 { constructor (name, yearOfBirth, job) {
+    this.name = name;
+    this.yearOfBirth = yearOfBirth;
+    this.job = job;
+    }
+
+    calculateAge() {
+        var age = new Date().getFullYear - this.yearOfBirth()
+        console.log(age)
+    }
+}
