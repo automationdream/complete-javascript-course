@@ -10,8 +10,10 @@
     <h1>Asynchronous JavaScript</h1>
     <script>
         const getIDs = new Promise((resolve, reject) => {
-            
-        })
+           setTimeout(() => {
+               resolve([523,883,432,974]);
+           }, 1500);
+        });
     </script>
 </body>
 </html>
