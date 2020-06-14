@@ -204,3 +204,109 @@ console.log(johnAthlete6)
 
 johnAthlete6.calculateAge()
 johnAthlete6.wonMedal()
+
+/////////////////////////////////
+// CODING CHALLENGE
+
+/*
+
+Suppose that you're working in a small town administration, and you're in charge of two town elements:
+1. Parks
+2. Streets
+
+It's a very small town, so right now there are only 3 parks and 4 streets. All parks and streets have a name and a build year.
+
+At an end-of-year meeting, your boss wants a final report with the following:
+1. Tree density of each park in the town (forumla: number of trees/park area)
+2. Average age of each town's park (forumla: sum of all ages/number of parks)
+3. The name of the park that has more than 1000 trees
+4. Total and average length of the town's streets
+5. Size classification of all streets: tiny/small/normal/big/huge. If the size is unknown, the default is normal
+
+All the report data should be printed to the console.
+
+HINT: Use some of the ES6 features: classes, subclasses, template strings, default parameters, maps, arrow functions, destructuring, etc.
+
+*/
+
+class TownElement { constructor(name, buildYear) {
+    this.name = name
+    this.buildYear = buildYear 
+    this.age = new Date().getFullYear() - this.buildYear
+}
+}
+
+class Park extends TownElement {
+    constructor(name, buildYear, numberOfTrees, parkArea) {
+        super (name, buildYear);
+        this.numberOfTrees = numberOfTrees;
+        this.parkArea = parkArea;
+        this.treeDensity = this.numberOfTrees / this.parkArea
+    }
+}
+class Street extends TownElement {
+    constructor(name, buildYear, lenthOfStreet) {
+        super (name, buildYear);
+        this.lenthOfStreet = lenthOfStreet;
+    }
+}
+
+
+GreenPark = new Park('Green Park', 1990, 1075, 1)
+NationalPark = new Park('National Park', 1990, 1075, 1)
+OakPark = new Park('Oak Park', 1989, 1075, 1)
+OakPark = new Street('Oak Park', 1989, 1075, 1)
+
+allParks = [GreenPark, NationalPark, OakPark, OakPark]
+allStreets = [GreenPark, NationalPark, OakPark, OakPark]
+
+
+const parkReport = (parks, streets) => {
+    const reportAvgAge = (obj) => {
+        numOfParks = obj.length
+        var sumAges = 0
+
+        for (const cur of obj) {
+            sumAges += cur.age
+            }
+
+        let avgAge = Math.round((sumAges/numOfParks),2)
+        console.log(`Our ${obj.length} parks have the average age of ${avgAge} years.`)
+}
+    const total = (obj) => {
+        var sumAges = 0
+
+        for (const cur of obj) {
+            sumAges += cur.age
+            }
+
+        console.log(`Our ${obj.length} streets have total length age of ${sumAges} km with an average... .`)
+}
+
+    const reportTreeDensity = (parks) => {
+        for (const cur of parks) {
+            console.log(`${cur.name} has a tree density of ${cur.treeDensity} trees per square km.`)
+            }
+
+    }
+    const report1000  = (parks) => {
+        for (const cur of parks) {
+            if (cur.numberOfTrees > 1000) {
+            console.log(`${cur.name} has more than 1000 trees.`)
+            }
+            }
+
+    }
+
+            
+    console.log('----PARKS REPORT----');
+    reportAvgAge(parks);
+    reportTreeDensity(parks);
+    report1000(parks);
+    console.log('----STREETS REPORT----');
+    total(streets);
+
+}
+
+parkReport(allParks,allStreets)
+
