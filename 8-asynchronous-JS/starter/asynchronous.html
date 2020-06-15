@@ -28,18 +28,12 @@
                 },1000, recID);
             })
         }
-        getIDs
-            .then(IDs => {
-            console.log(IDs)
-            return getRecipe(IDs[2]);
-            })
-            .then(recipe => {
-                console.log(recipe)
-            })
-            .catch(error => {
-                console.log('Error!!');
-            });
-        
+        async function getRecipesAW() {
+            const IDs = await getIDs;
+            console.log(IDs);
+
+        }
+        getRecipesAW();
     </script>
 </body>
 </html>
