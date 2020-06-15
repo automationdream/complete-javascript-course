@@ -31,6 +31,8 @@
         async function getRecipesAW() {
             const IDs = await getIDs;
             console.log(IDs);
+            const recipe = await getRecipe(IDs[2]);
+            console.log(recipe);
 
         }
         getRecipesAW();
