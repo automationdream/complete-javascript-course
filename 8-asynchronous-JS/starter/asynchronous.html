@@ -27,8 +27,16 @@
             })
             .then(data => console.log(data.name))
             .catch(error => console.log(error))
-            
         });
+            
+        async function getHeroes(hero) {
+            const result = await fetch(`https://swapi.dev/api/people/${hero}`)
+            const data = await result.json()
+            console.log(data)
+        };
+
+        getHeroes(32);
+
     </script>
 </body>
 </html>
