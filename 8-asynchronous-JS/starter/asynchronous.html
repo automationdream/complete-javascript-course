@@ -34,8 +34,10 @@
             const recipe = await getRecipe(IDs[2]);
             console.log(recipe);
 
+            return recipe
+
         }
-        getRecipesAW();
+        getRecipesAW().then(result => console.log(`${result}`))
     </script>
 </body>
 </html>
