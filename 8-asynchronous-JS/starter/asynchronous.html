@@ -9,13 +9,26 @@
 <body>
     <h1>Asynchronous JavaScript</h1>
     <script>
-        fetch("https://swapi.dev/api/people/1")
+
+
+
+        function* range(start, end) {
+    for (let i = start; i <= end; i++) {
+        yield i;
+    }
+}
+        x_array = [...range(1,1)]
+
+        x_array.forEach(element => {
+        fetch(`https://swapi.dev/api/people/${element}`)
             .then(result => {
-                console.log(result);
+                // console.log(result);
                 return result.json();
             })
-            .then(data => console.log(data))
+            .then(data => console.log(data.name))
             .catch(error => console.log(error))
+            
+        });
     </script>
 </body>
 </html>
