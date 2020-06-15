@@ -10,7 +10,11 @@
     <h1>Asynchronous JavaScript</h1>
     <script>
         fetch("https://swapi.dev/api/people/1")
-            .then(result => console.log(result))
+            .then(result => {
+                console.log(result);
+                return result.json();
+            })
+            .then(data => console.log(data))
             .catch(error => console.log(error))
     </script>
 </body>
