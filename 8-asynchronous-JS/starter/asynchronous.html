@@ -17,16 +17,21 @@
         yield i;
     }
 }
-        x_array = [...range(1,1)]
+        x_array = [...range(1,100)]
 
         x_array.forEach(element => {
-        fetch(`https://swapi.dev/api/people/${element}`)
-            .then(result => {
-                // console.log(result);
-                return result.json();
-            })
-            .then(data => console.log(data.name))
-            .catch(error => console.log(error))
+            try {
+                fetch(`https://swapi.dev/api/people/${element}`)
+                    .then(result => {
+                        // console.log(result);
+                        return result.json();
+                    })
+                    .then(data => console.log(data.name))
+                    .catch(error => console.log(error))
+                
+            } catch (error) {
+            //    console.log(error) 
+            }
         });
             
         async function getHeroes(hero) {
