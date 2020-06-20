@@ -1,4 +1,5 @@
 import Search from './models/Search'
+import * as searchView from './view/searchView'
 
 /** Global state of the app
  * - Search object
@@ -10,11 +11,10 @@ import Search from './models/Search'
 const state = {}
 const controlSearch = async () => {
     //1) Get query from view
-    const query = 'pizza' //TODO
+    const query = searchView.getInput()
 
     //2) New search object and state
     state.search = new Search(query);
-    // search.getResults()
 
     //3) Prepare UI for results
 
