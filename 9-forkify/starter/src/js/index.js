@@ -1,15 +1,5 @@
-import axios from 'axios';
+import Search from './models/Search'
 
-async function getResults(query) {
-    try {
-            const result = await axios.get(`https://forkify-api.herokuapp.com/api/search?q=${query}`);
-            const recipes = result.data.recipes;
-            console.log(recipes)
-    }
-    catch (error) {
-        alert(error)
-    }
-
-}
-
-getResults('dupa')
+const search = new Search('pizza')
+console.log(search);
+search.getResults()
