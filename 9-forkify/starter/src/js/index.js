@@ -1,4 +1,1 @@
-// Global app controller
-import num from './test';
-
-console.log(`I imported ${num}`)
+import string from './models/Search';
