@@ -1,4 +1,5 @@
 import Search from './models/Search'
+import Recipe from './models/Recipe'
 import * as searchView from './view/searchView'
 import { elements, renderLoader, clearLoader } from './view/base'
 
@@ -8,7 +9,6 @@ import { elements, renderLoader, clearLoader } from './view/base'
  * - Shopping list object
  * - Liked recipes
  */
-
 const state = {}
 const controlSearch = async () => {
     //1) Get query from view
@@ -45,3 +45,8 @@ elements.searchResPages.addEventListener('click', e => {
     }
 }
 )
+
+const r = new Recipe("47746")
+// r.getRecipe();
+
+console.log(r)
