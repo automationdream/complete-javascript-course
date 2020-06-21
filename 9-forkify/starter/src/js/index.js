@@ -29,7 +29,6 @@ const controlSearch = async () => {
 
     //5) Render result on UI
     searchView.renderResults(state.search.result);
-    console.log(state.search.result);
 }
 
 document.querySelector('.search').addEventListener('submit', e => {
