@@ -22,6 +22,7 @@ const controlSearch = async () => {
     await state.search.getResults();
 
     //5) Render result on UI
+    searchView.renderResults(state.search.result);
     console.log(state.search.result);
 }
 
