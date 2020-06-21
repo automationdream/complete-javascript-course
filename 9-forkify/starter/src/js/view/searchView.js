@@ -2,6 +2,10 @@ import { elements } from './base'
 
 export const getInput = () => elements.searchInput.value
 
+export const clearInput = () => elements.searchInput.value = '';
+
+export const clearResults = () => elements.searchResList.innerHTML = '';
+
 const renderRecipe = recipe => {
     console.log(recipe)
     const markup = `
