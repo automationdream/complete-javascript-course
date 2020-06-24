@@ -39,34 +39,38 @@ document.querySelector('.search').addEventListener('submit', e => {
 elements.searchResPages.addEventListener('click', e => {
     const btn = e.target.closest('.btn-inline')
     if (btn) {
-       const goToPage = parseInt(btn.dataset.goto);
-       searchView.clearResults();
-       searchView.renderResults(state.search.result, goToPage);
+        const goToPage = parseInt(btn.dataset.goto);
+        searchView.clearResults();
+        searchView.renderResults(state.search.result, goToPage);
     }
 }
 )
 
 const controlRecipe = async () => {
     // Get rid of id
-    const id = window.location.hash.replace("#","");
+    const id = window.location.hash.replace("#", "");
     console.log(id)
 
     if (id) {
-        //Prepare id for changes
+        try {
+            //Prepare id for changes
 
-        //Create new recipe object
-        state.recipe = new Recipe(id)
+            //Create new recipe object
+            state.recipe = new Recipe(id)
 
-        //Get recipe data
-        await state.recipe.getRecipe()
+            //Get recipe data
+            await state.recipe.getRecipe()
 
-        state.recipe.calcTime()
-        state.recipe.calcServings()
-        //Render recipe
-        console.log(state.recipe)
+            state.recipe.calcTime()
+            state.recipe.calcServings()
+            //Render recipe
+            console.log(state.recipe)
 
+        } catch (error) {
+            console.log(error)
+        }
     }
 
 }
 
-['hashchange', 'load'].forEach(event => window.addEventListener(event,controlRecipe))
+['hashchange', 'load'].forEach(event => window.addEventListener(event, controlRecipe))
