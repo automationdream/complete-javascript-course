@@ -46,9 +46,6 @@ elements.searchResPages.addEventListener('click', e => {
 }
 )
 
-const r = new Recipe("47746")
-// r.getRecipe();
-
 const controlRecipe = async () => {
     // Get rid of id
     const id = window.location.hash.replace("#","");
@@ -73,3 +70,4 @@ const controlRecipe = async () => {
 }
 
 window.addEventListener('hashchange',controlRecipe)
+window.addEventListener('load',controlRecipe)
