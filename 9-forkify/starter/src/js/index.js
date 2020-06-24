@@ -49,8 +49,27 @@ elements.searchResPages.addEventListener('click', e => {
 const r = new Recipe("47746")
 // r.getRecipe();
 
-const controlRecipe = () => {
-    const id = window.location.hash
+const controlRecipe = async () => {
+    // Get rid of id
+    const id = window.location.hash.replace("#","");
+    console.log(id)
+
+    if (id) {
+        //Prepare id for changes
+
+        //Create new recipe object
+        state.recipe = new Recipe(id)
+
+        //Get recipe data
+        await state.recipe.getRecipe()
+
+        state.recipe.calcTime()
+        state.recipe.calcServings()
+        //Render recipe
+        console.log(state.recipe)
+
+    }
+
 }
 
 window.addEventListener('hashchange',controlRecipe)

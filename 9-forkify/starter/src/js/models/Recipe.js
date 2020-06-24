@@ -23,7 +23,7 @@ export default class Recipe {
     calcTime() {
         const numIng = this.ingredients.length;
         const periods = Math.ceil(numIng/3);
-        const time = periods * 15;
+        this.time = periods * 15;
     }
     calcServings(){
         this.servings = 4;
