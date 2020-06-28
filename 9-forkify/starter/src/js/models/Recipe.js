@@ -23,31 +23,71 @@ export default class Recipe {
 
     calcTime() {
         const numIng = this.ingredients.length;
-        const periods = Math.ceil(numIng/3);
+        const periods = Math.ceil(numIng / 3);
         this.time = periods * 15;
     }
 
-    calcServings(){
+    calcServings() {
         this.servings = 4;
     }
 
-    parseIngredients(){
-            const unitLong=['tablespoons', 'tablespoon', 'ounce', 'ounces', 'teaspoon','teaspoons','cups','pounds' ]
-            const unitShort=['tbsp', 'tbsp', 'oz', 'oz', 'tsp','tsp','cup','pound' ]
+    parseIngredients() {
+        const unitLong = ['tablespoons', 'tablespoon', 'ounce', 'ounces', 'teaspoon', 'teaspoons', 'cups', 'pounds']
+        const unitShort = ['tbsp', 'tbsp', 'oz', 'oz', 'tsp', 'tsp', 'cup', 'pound']
 
-            // Uniform units
-            const newIngredients= this.ingredients.map(el => {
-                let ingredient = el.toLowerCase();
-                unitLong.forEach((unit,i) => {
-                    ingredient = ingredient.replace(unit,unitShort[i]);
-                })
+        // 1) Uniform units
+        const newIngredients = this.ingredients.map(el => {
+            let ingredient = el.toLowerCase();
+            unitLong.forEach((unit, i) => {
+                ingredient = ingredient.replace(unit, unitShort[i]);
+            })
 
-            // Remove parentheses
-            ingredient = ingredient.replace(/ *\([^)]*\) */g, "")
+            // 2) Remove parentheses
+            ingredient = ingredient.replace(/ *\([^)]*\) */g, ' ')
+
+            // 3) Parse ingredients into count, unit and ingredient
+            const arrIng = ingredient.split(' ')
+            const unitIndex = arrIng.findIndex(el2 => unitShort.includes(el2));
+
+            let objIng;
+            if (unitIndex > -1) { 
+                // There is a unit
+                const arrCount = arrIng.slice(0, unitIndex);
+
+                let count;
+                if (arrCount.length === 1) {
+                    count = eval(arrIng[0].replace('-', '+'));
+                } else {
+                    count = eval(arrIng.slice(0, unitIndex).join('+'))
+                }
+                    objIng = {
+                        count,
+                        unit: arrIng[unitIndex],
+                        ingredient: arrIng.slice(unitIndex + 1).join(' ')
+                    }
 
 
-            // Parse ingredients into count, unit ingredients
-            return ingredient;
+            } else if (parseInt(arrIng[0], 10)) {
+                // There is a unit but first element is number
+                objIng = {
+                    count: parseInt(arrIng[0], 10),
+                    unit: '',
+                    ingredient: arrIng.slice(1).join(' ')
+                }
+            }
+
+            else if (unitIndex === -1) {
+                // There is NO unit and NO number in first position
+                objIng = {
+                    count: 1,
+                    unit: '',
+                    ingredient: arrIng.slice(1).join(' ')
+                }
+
+            }
+
+            // // Parse ingredients into count, unit ingredients
+            return objIng;
         })
         this.ingredients = newIngredients;
     }

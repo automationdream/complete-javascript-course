@@ -49,7 +49,6 @@ elements.searchResPages.addEventListener('click', e => {
 const controlRecipe = async () => {
     // Get rid of id
     const id = window.location.hash.replace("#", "");
-    console.log(id)
 
     if (id) {
         try {
@@ -60,10 +59,10 @@ const controlRecipe = async () => {
 
             //Get recipe data
             await state.recipe.getRecipe()
-
+            state.recipe.parseIngredients()
             state.recipe.calcTime()
             state.recipe.calcServings()
-            state.recipe.parseIngredients()
+
             //Render recipe
             console.log(state.recipe)
 
