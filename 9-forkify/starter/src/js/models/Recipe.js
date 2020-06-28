@@ -20,12 +20,36 @@ export default class Recipe {
         }
 
     }
+
     calcTime() {
         const numIng = this.ingredients.length;
         const periods = Math.ceil(numIng/3);
         this.time = periods * 15;
     }
+
     calcServings(){
         this.servings = 4;
     }
+
+    parseIngredients(){
+            const unitLong=['tablespoons', 'tablespoon', 'ounce', 'ounces', 'teaspoon','teaspoons','cups','pounds' ]
+            const unitShort=['tbsp', 'tbsp', 'oz', 'oz', 'tsp','tsp','cup','pound' ]
+
+            // Uniform units
+            const newIngredients= this.ingredients.map(el => {
+                let ingredient = el.toLowerCase();
+                unitLong.forEach((unit,i) => {
+                    ingredient = ingredient.replace(unit,unitShort[i]);
+                })
+
+            // Remove parentheses
+            // ingredient = ingredient.replace()
+
+
+            // Parse ingredients into count, unit ingredients
+            return ingredient;
+        })
+        this.ingredients = newIngredients;
+    }
+
 }
